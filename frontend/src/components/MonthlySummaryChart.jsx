@@ -6,7 +6,7 @@ import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import axios from 'axios';
-const API_BASE = import.meta.env.VITE_API_URL;
+import { API_BASE } from '../config';
 
 const MonthlySummaryChart = () => {
     const [monthlyData, setMonthlyData] = useState([]);

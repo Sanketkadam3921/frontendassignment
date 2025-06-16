@@ -4,7 +4,7 @@ import {
     TableHead, TableRow, Paper, Typography, Chip, Box
 } from '@mui/material';
 import axios from 'axios';
-const API_BASE = import.meta.env.VITE_API_URL;
+import { API_BASE } from '../config';
 
 const ExpenseList = () => {
     const [expenses, setExpenses] = useState([]);

@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
-const API_BASE = import.meta.env.VITE_API_URL;
+import { API_BASE } from '../config';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#00C49F'];
 
