@@ -169,6 +169,7 @@ function Analytics() {
             if (filters.timeframe) {
                 params.timeframe = filters.timeframe;
             }
+            console.log(API_BASE)
 
             const response = await axios.get(`${API_BASE}/expenses/analytics/top-expenses`, {
                 params
