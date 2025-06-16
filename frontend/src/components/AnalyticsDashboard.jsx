@@ -170,7 +170,7 @@ function Analytics() {
                 params.timeframe = filters.timeframe;
             }
 
-            const response = await axios.get('https://express-production-e484.up.railway.app/expenses/analytics/top-expenses', {
+            const response = await axios.get(`${API_BASE}/expenses/analytics/top-expenses`, {
                 params
             });
 
