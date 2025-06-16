@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#00C49F'];
 
@@ -14,7 +15,7 @@ const SummaryDashboard = () => {
     useEffect(() => {
         const fetchSummary = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/expenses/category-summary');
+                const res = await axios.get(`${API_BASE}/expenses/category-summary`);
 
                 // Extract the summary array
                 const summary = res.data.data.summary;

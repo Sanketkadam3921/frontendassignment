@@ -3,6 +3,7 @@ import {
     Box, TextField, Button, MenuItem, Select, InputLabel, FormControl, Typography, Chip
 } from '@mui/material';
 import axios from 'axios';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const ExpenseForm = () => {
     const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const ExpenseForm = () => {
             const payload = { ...formData };
             if (formData.shareType === 'EQUAL') delete payload.customShares;
 
-            await axios.post('http://localhost:3000/expenses', payload);
+            await axios.post(`${API_BASE}/expenses`, payload);
             alert('Expense added!');
             setFormData({
                 amount: '',

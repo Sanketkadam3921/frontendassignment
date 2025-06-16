@@ -6,6 +6,7 @@ import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 import axios from 'axios';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const MonthlySummaryChart = () => {
     const [monthlyData, setMonthlyData] = useState([]);
@@ -14,7 +15,7 @@ const MonthlySummaryChart = () => {
     useEffect(() => {
         const fetchMonthlySummary = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/expenses/analytics/monthly-summary');
+                const res = await axios.get(`${API_BASE}/expenses/analytics/monthly-summary`);
                 const formatted = Object.entries(res.data.data || {}).map(([month, total]) => ({
                     month,
                     total: typeof total === 'number' ? total : 0,

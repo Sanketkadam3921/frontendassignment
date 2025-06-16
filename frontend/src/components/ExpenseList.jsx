@@ -11,7 +11,8 @@ const ExpenseList = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/expenses');
+                const res = await axios.post(`${API_BASE}/expenses`);
+
                 console.log('Fetched expenses:', res.data);
                 setExpenses(res.data.data);
             } catch (err) {

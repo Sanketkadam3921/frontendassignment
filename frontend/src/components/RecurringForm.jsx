@@ -4,6 +4,9 @@ import {
     Typography, Chip
 } from '@mui/material';
 import axios from 'axios';
+const API_BASE = import.meta.env.VITE_API_URL;
+
+
 
 const RecurringForm = () => {
     const [formData, setFormData] = useState({
@@ -46,7 +49,7 @@ const RecurringForm = () => {
             if (formData.shareType === 'EQUAL') delete payload.customShares;
             if (!formData.endDate) delete payload.endDate;
 
-            await axios.post('http://localhost:3000/recurring', payload);
+            await axios.post(`${API_BASE}/recurring`, payload);
             alert('Recurring expense created!');
             setFormData({
                 amount: '',
