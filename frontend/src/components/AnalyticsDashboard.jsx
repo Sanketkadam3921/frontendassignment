@@ -167,7 +167,7 @@ function Analytics() {
     };
 
     const fetchIndividualVsGroup = async () => {
-        const response = await axios.get(`${API_BASE}/analytics/individual-vs-group`, {
+        const response = await axios.get('https://express-production-e484.up.railway.app/expenses/analytics/top-expenses', {
             params: {
                 startDate: filters.startDate,
                 endDate: filters.endDate
