@@ -163,7 +163,8 @@ function Analytics() {
                 params.limit = parseInt(filters.limit);
             }
 
-            if (filters.category?.trim()) {
+            // Only send category if it's not "all" or empty
+            if (filters.category && filters.category.trim().toLowerCase() !== 'all') {
                 params.category = filters.category.trim();
             }
 
@@ -181,6 +182,7 @@ function Analytics() {
             console.error("TOP EXPENSES FETCH ERROR:", error);
         }
     };
+
 
 
     const fetchIndividualVsGroup = async () => {
