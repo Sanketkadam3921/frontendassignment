@@ -129,7 +129,7 @@ function Analytics() {
     };
 
     const fetchCategorySummary = async () => {
-        const response = await axios.get(`${API_BASE}/category-summary`, {
+        const response = await axios.get(`${API_BASE}/expenses/category-summary`, {
             params: {
                 startDate: filters.startDate,
                 endDate: filters.endDate
@@ -140,7 +140,7 @@ function Analytics() {
 
     const fetchSpendingPatterns = async () => {
         try {
-            const response = await axios.get(`${API_BASE}/analytics/spending-patterns`, {
+            const response = await axios.get(`${API_BASE}/expenses/analytics/spending-patterns`, {
                 params: {
                     person: filters.person || undefined,
                     startDate: filters.startDate,
@@ -154,29 +154,24 @@ function Analytics() {
         }
     };
 
-
     const fetchTopExpenses = async () => {
         try {
             const params = {};
-
             if (filters.limit && !isNaN(filters.limit)) {
                 params.limit = parseInt(filters.limit);
             }
-
-            // Only send category if it's not "all" or empty
             if (filters.category && filters.category.trim().toLowerCase() !== 'all') {
                 params.category = filters.category.trim();
             }
-
             if (filters.timeframe) {
                 params.timeframe = filters.timeframe;
             }
 
-            const response = await axios.get('https://express-production-e484.up.railway.app/expenses/analytics/top-expenses', {
+            // Use API_BASE consistently
+            const response = await axios.get(`${API_BASE}/expenses/analytics/top-expenses`, {
                 params
             });
 
-            console.log("TOP EXPENSES RESPONSE:", response.data);
             setTopExpenses(response?.data?.data?.expenses || []);
         } catch (error) {
             console.error("TOP EXPENSES FETCH ERROR:", error);
@@ -186,7 +181,7 @@ function Analytics() {
 
 
     const fetchIndividualVsGroup = async () => {
-        const response = await axios.get(`${API_BASE}/analytics/individual-vs-group`, {
+        const response = await axios.get(`${API_BASE}/expenses/analytics/individual-vs-group`, {
             params: {
                 startDate: filters.startDate,
                 endDate: filters.endDate
