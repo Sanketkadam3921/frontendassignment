@@ -163,7 +163,7 @@ function Analytics() {
                 timeframe: filters.timeframe
             }
         });
-        setTopExpenses(response.data?.data?.expenses || []);
+        setTopExpenses(response.data.data.expenses || []);
     };
 
     const fetchIndividualVsGroup = async () => {
