@@ -177,7 +177,7 @@ function Analytics() {
             });
 
             console.log("TOP EXPENSES RESPONSE:", response.data);
-            setTopExpenses(response.data.expenses || []);
+            setTopExpenses(response?.data?.data?.expenses || []);
         } catch (error) {
             console.error("TOP EXPENSES FETCH ERROR:", error);
         }
