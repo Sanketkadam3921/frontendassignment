@@ -156,15 +156,32 @@ function Analytics() {
 
 
     const fetchTopExpenses = async () => {
-        const response = await axios.get('https://express-production-e484.up.railway.app/expenses/analytics/top-expenses', {
-            params: {
-                limit: filters.limit,
-                category: filters.category || undefined,
-                timeframe: filters.timeframe
+        try {
+            const params = {};
+
+            if (filters.limit && !isNaN(filters.limit)) {
+                params.limit = parseInt(filters.limit);
             }
-        });
-        setTopExpenses(response.data.expenses || []);
+
+            if (filters.category?.trim()) {
+                params.category = filters.category.trim();
+            }
+
+            if (filters.timeframe) {
+                params.timeframe = filters.timeframe;
+            }
+
+            const response = await axios.get('https://express-production-e484.up.railway.app/expenses/analytics/top-expenses', {
+                params
+            });
+
+            console.log("TOP EXPENSES RESPONSE:", response.data);
+            setTopExpenses(response.data.expenses || []);
+        } catch (error) {
+            console.error("TOP EXPENSES FETCH ERROR:", error);
+        }
     };
+
 
     const fetchIndividualVsGroup = async () => {
         const response = await axios.get(`${API_BASE}/analytics/individual-vs-group`, {
