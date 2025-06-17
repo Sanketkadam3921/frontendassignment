@@ -12,7 +12,7 @@ const ExpenseList = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const res = await axios.post(`${API_BASE}/expenses`);
+                const res = await axios.get(`${API_BASE}/expenses`);
 
                 console.log('Fetched expenses:', res.data);
                 setExpenses(res.data.data);
