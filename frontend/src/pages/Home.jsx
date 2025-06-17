@@ -17,7 +17,7 @@ const Home = () => {
                     <ExpenseList />
                 </Grid>
                 <Grid item xs={12}>
-                    <Settlement />
+                    <Settlements />
                 </Grid>
             </Grid>
         </Box>
