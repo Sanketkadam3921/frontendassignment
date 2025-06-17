@@ -120,14 +120,14 @@ function Analytics() {
     };
 
     const fetchMonthlySummary = async () => {
-        const response = await axios.get(`${API_BASE}/analytics/monthly-summary`, {
+        const response = await axios.get(`${API_BASE}/expenses/analytics/monthly-summary`, {
             params: { year: filters.year, month: filters.month }
         });
         setMonthlySummary(response.data.data || null);
     };
 
     const fetchCategorySummary = async () => {
-        const response = await axios.get(`${API_BASE}/category-summary`, {
+        const response = await axios.get(`${API_BASE}/expenses/category-summary`, {
             params: {
                 startDate: filters.startDate,
                 endDate: filters.endDate
@@ -138,7 +138,7 @@ function Analytics() {
 
     const fetchSpendingPatterns = async () => {
         try {
-            const response = await axios.get(`${API_BASE}/analytics/spending-patterns`, {
+            const response = await axios.get(`${API_BASE}/expenses/analytics/spending-patterns`, {
                 params: {
                     person: filters.person || undefined,
                     startDate: filters.startDate,
@@ -185,7 +185,7 @@ function Analytics() {
 
 
     const fetchIndividualVsGroup = async () => {
-        const response = await axios.get(`${API_BASE}/analytics/individual-vs-group`, {
+        const response = await axios.get(`${API_BASE}/expenses/analytics/individual-vs-group`, {
             params: {
                 startDate: filters.startDate,
                 endDate: filters.endDate
